@@ -1,16 +1,28 @@
 import React, {Component} from 'react'
-import List from '../../playground/List'
 import Title from './Title'
+import Photogram from './Photogram.js'
+
+const posts = [{
+    id: "0", 
+    description: "tropical landscape", 
+    imageLink: "https://previews.123rf.com/images/batechenkofff/batechenkofff1801/batechenkofff180100142/93785347-amazing-scenic-caribbean-tropical-landscape-blue-bay-top-view-dominican-republic.jpg"
+}, {
+    id: "1", 
+    description: "1957 corvette", 
+    imageLink: "https://cdn.hswstatic.com/gif/1957-corvette-7.jpg" 
+}, {
+    id: "2", 
+    description: "venice beach", 
+    imageLink: "https://www.jetsetter.com/uploads/sites/7/2018/05/GettyImages-931643290-1380x1035.jpg"
+}]
+
 
 class Main extends Component {
     render() {
-        return (
-        <div>
-            <Title title = {'To-Do List'}/>
-            <List tasks = {['Write to alum', 'Plan schedule', 'Go to gym']}/>
-            <List tasks = {['Make 2 week plan', 'Read bible']}/>
-        </div>
-        )
+        return< div>
+                <Title title = {'Photogram'}/>
+                <Photogram posts = {posts}/>
+              </div>
     }
 }
 
