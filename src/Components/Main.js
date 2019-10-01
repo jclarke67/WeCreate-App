@@ -7,13 +7,17 @@ const posts = [{
     description: "tropical landscape", 
     imageLink: "https://previews.123rf.com/images/batechenkofff/batechenkofff1801/batechenkofff180100142/93785347-amazing-scenic-caribbean-tropical-landscape-blue-bay-top-view-dominican-republic.jpg"
 }, {
-    id: "1", 
+    id: "1",
     description: "1957 corvette", 
     imageLink: "https://cdn.hswstatic.com/gif/1957-corvette-7.jpg" 
 }, {
     id: "2", 
     description: "venice beach", 
     imageLink: "https://www.jetsetter.com/uploads/sites/7/2018/05/GettyImages-931643290-1380x1035.jpg"
+}, {
+    id: "3", 
+    description: "map of north america", 
+    imageLink: "https://parade.com/wp-content/uploads/2018/10/AskMarylin_NorthAndSouthAmerica-FTR.jpg"
 }]
 
 

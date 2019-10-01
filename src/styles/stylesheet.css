@@ -5,6 +5,7 @@ html {
 
 p {
     font-size: 1.6rem;
+    font-family: 'arial';
     line-height: 1.5;
 }
 
@@ -38,12 +39,14 @@ h1 {
     border: 1px solid #d3d3d3;
     padding: 2rem;
     flex-grow: 1;
-    margin: 0 2rem 2rem 2rem
+    margin: 0 2rem 2rem 2rem;
+    border-radius: 1rem;
 }
 
 .photo {
     width: calc(100% + 4rem);
     margin: -2rem 0rem 0rem -2rem;
+    border-radius: 1rem;
 }
 
 .button-container {
@@ -54,7 +57,7 @@ h1 {
 
 .remove-button {
     flex-basis: 48%;
-    color: red;
+    color: rgb(206, 0, 45);
     font-size: 15px;
     border: 2px solid #f2f2f2;
     line-height: 2;
