@@ -75,16 +75,16 @@ class Main extends Component {
         return (
         <div>
             <h1><Link to="/"> LetsCreate! </Link></h1>
-            {(this.state.isSignedIn || this.state.isSignedIn === undefined) ?
-            <Route exact path = "/app" render = {() => (
-                <div>
-                    <Photogram posts {...this.props}/>
-                </div>
-            )}/> : 
-            <Route exact path = "/" render = {({history}) => (
+            {(!this.state.isSignedIn || this.state.isSignedIn === undefined) ? 
+            <div>
+                <h1>Not signed in</h1>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
-                // <Login {...this.props} onHistory = {history}/>
-            )}/>}
+            </div> :
+            <div>
+                <Photogram posts {...this.props}/> 
+            </div>}
+            
+            
 
             <Route path = "/AddPhoto" render = {({history}) => (
                 <AddPhoto {...this.props} onHistory = {history}/>
