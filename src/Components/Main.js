@@ -31,9 +31,7 @@ const uiConfig = {
 class Main extends Component {
     constructor(props) {
         super()
-        this.state = {
-            // user:{},
-        }
+        this.state = { isSignedIn: false }
     }
 
     authListener() {
@@ -54,7 +52,9 @@ class Main extends Component {
       }
 
     componentDidMount() {
-        console.log("IS SIGNED IN???")
+        firebase.auth().onAuthStateChanged(user => {
+            this.setState({ isSignedIn: !!user})
+        })
         console.log(this.state.isSignedIn)
         this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
             (user) => this.setState({isSignedIn: !!user})
@@ -77,14 +77,13 @@ class Main extends Component {
             <h1><Link to="/"> LetsCreate! </Link></h1>
             {(!this.state.isSignedIn || this.state.isSignedIn === undefined) ? 
             <div>
-                <h1>Not signed in</h1>
+                <p>Not signed in</p>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
             </div> :
             <div>
+                <p>Signed in</p>
                 <Photogram posts {...this.props}/> 
             </div>}
-            
-            
 
             <Route path = "/AddPhoto" render = {({history}) => (
                 <AddPhoto {...this.props} onHistory = {history}/>
