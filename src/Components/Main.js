@@ -54,6 +54,8 @@ class Main extends Component {
       }
 
     componentDidMount() {
+        console.log("IS SIGNED IN???")
+        console.log(this.state.isSignedIn)
         this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
             (user) => this.setState({isSignedIn: !!user})
         );
@@ -73,15 +75,15 @@ class Main extends Component {
         return (
         <div>
             <h1><Link to="/"> LetsCreate! </Link></h1>
-            {!this.state.isSignedIn ?
-            <Route exact path = "/" render = {({history}) => (
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
-                // <Login {...this.props} onHistory = {history}/>
-            )}/> :
+            {(this.state.isSignedIn || this.state.isSignedIn === undefined) ?
             <Route exact path = "/app" render = {() => (
                 <div>
                     <Photogram posts {...this.props}/>
                 </div>
+            )}/> : 
+            <Route exact path = "/" render = {({history}) => (
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+                // <Login {...this.props} onHistory = {history}/>
             )}/>}
 
             <Route path = "/AddPhoto" render = {({history}) => (
