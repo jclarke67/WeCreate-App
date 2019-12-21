@@ -81,7 +81,6 @@ class Main extends Component {
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
             </div> :
             <div>
-                <p>Signed in</p>
                 <Photogram posts {...this.props}/> 
             </div>}
 
