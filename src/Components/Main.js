@@ -20,7 +20,12 @@ const uiConfig = {
     // We will display Google and Facebook as auth providers.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ]
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      // Avoid redirects after sign-in.
+      signInSuccessWithAuthResult: () => true
+    }
   };
 
 class Main extends Component {
@@ -49,9 +54,17 @@ class Main extends Component {
       }
 
     componentDidMount() {
+        this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+            (user) => this.setState({isSignedIn: !!user})
+        );
         this.authListener()
         this.props.startLoadingPost()
         this.props.startLoadingComments()
+    }
+
+    // Make sure we un-register Firebase observers when the component unmounts.
+    componentWillUnmount() {
+        this.unregisterAuthObserver();
     }
 
     render() {
@@ -59,18 +72,17 @@ class Main extends Component {
         console.log(this.props)
         return (
         <div>
-            <h1><Link to="/"> Photogram </Link></h1>
-            {/* {this.state.user ? ( */}
+            <h1><Link to="/"> LetsCreate! </Link></h1>
+            {!this.state.isSignedIn ?
             <Route exact path = "/" render = {({history}) => (
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
                 // <Login {...this.props} onHistory = {history}/>
-            )}/>
-            {/* ) : ( */}
-            {/* // <Route exact path = "/app" render = {() => (
+            )}/> :
+            <Route exact path = "/app" render = {() => (
                 <div>
                     <Photogram posts {...this.props}/>
                 </div>
-            )}/>)} */}
+            )}/>}
 
             <Route path = "/AddPhoto" render = {({history}) => (
                 <AddPhoto {...this.props} onHistory = {history}/>
