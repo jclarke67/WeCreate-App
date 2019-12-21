@@ -2,7 +2,6 @@ import * as firebase from "firebase";
 
 import "firebase/auth";
 
-
 var config = {
   apiKey: "AIzaSyC4ne4HUbSkNVdtheIcYhOBuJxrgeKme7k",
   authDomain: "jeffseniorproject-28d79.firebaseapp.com",

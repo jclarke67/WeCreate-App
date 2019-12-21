@@ -1,10 +1,25 @@
 import React, {Component} from "react"
+import { database } from "../database/config";
 
 class Login extends Component {
     constructor() {
         super();
+        // this.login = this.login.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // handleChange(e) {
+    //     this.setState({ [e.target.name]: e.target.value });
+    // }
+
+    // login(e) {
+    //     e.preventDefault();
+    //     database.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+    //     }).catch((error) => {
+    //         console.log(error);
+    //       });
+    // }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -17,25 +32,13 @@ class Login extends Component {
         else {
             alert("Try again")
         }
-        // const imageLink = event.target.elements.link.value
-        // const description = event.target.elements.description.value
-        // const post = {
-        //     id: Number(new Date()),
-        //     alt: "N/A",
-        //     description: description,
-        //     imageLink: imageLink
-        // }
-        // if (description && imageLink) {
-        //     this.props.addPost(post)
-        //     this.props.onHistory.push('/')
-        // }
     }
 
     render() {
         return (
             <div>
                 <div className = "form">
-                    <form onSubmit = {this.handleSubmit()}>
+                    <form onSubmit = {this.handleSubmit}>
                         <input type = "text" placeholder = "Please type your username" name = "username"/>
                         <input type = "text" placeholder = "Please type your password" name = "password"/>
                         <button className = "button">Login</button>
